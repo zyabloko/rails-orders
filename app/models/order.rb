@@ -26,7 +26,7 @@ class Order < ApplicationRecord
 
   belongs_to :user
   belongs_to :account
-  has_one :account_transaction
+  has_many :account_transactions, dependent: :destroy
 
   validates :amount, numericality: { greater_than: 0 }
   validate :account_belongs_to_user
